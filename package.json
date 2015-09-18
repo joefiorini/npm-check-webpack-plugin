@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "files": "dist",
+  "files":
+    [ "README.md",
+      "dist"
+    ],
   "directories": {
     "example": "example"
   },

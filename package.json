@@ -13,14 +13,13 @@
   "scripts": {
     "build": "babel -d dist src",
     "pretest": "npm run build",
-    "test": "cd example && webpack",
+    "test": "cd example && $(npm bin)/webpack",
     "prepublish": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel": "^5.8.23",
-    "webpack": "^1.12.2"
+    "babel": "^5.8.23"
   },
   "dependencies": {
     "chalk": "^1.1.1",

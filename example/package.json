@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "debug": "^2.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.2"
   }
+
 }

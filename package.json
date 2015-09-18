@@ -1,0 +1,29 @@
+{
+  "name": "npm-check-webpack-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": "dist",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "babel -d dist src",
+    "pretest": "npm run build",
+    "test": "cd example && webpack",
+    "prepublish": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1",
+    "npm": "^3.3.3",
+    "npm-check": "^4.0.1"
+  }
+}

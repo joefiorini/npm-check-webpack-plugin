@@ -1,0 +1,7 @@
+{
+  "name": "npm-check-webpack-plugin-example",
+  "version": "1.0.0",
+  "dependencies": {
+    "debug": "^2.0.0"
+  }
+}

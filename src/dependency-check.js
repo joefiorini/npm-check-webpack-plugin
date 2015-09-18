@@ -1,7 +1,7 @@
 import mkDebug from 'debug'
 import npmCheck from 'npm-check';
 import {Logger} from './logger';
-import {needsInstall, npmInstall} from './utils';
+import {needsInstall, npmInstall, findPackageJson} from './utils';
 
 const debug = mkDebug('npm-check-webpack-plugin');
 
@@ -32,8 +32,11 @@ export class DependencyCheck {
 
     let checkOptions =
       { skipUnused: true,
+        path: findPackageJson()
       };
 
+    debug('Using options for npmCheck:');
+    debug(checkOptions);
     return npmCheck(checkOptions)
       .then(this.processCheck)
       .catch((reason) => {

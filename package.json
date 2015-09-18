@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "files":
-    [ "README.md",
-      "dist"
-    ],
+  "files": [
+    "README.md",
+    "dist"
+  ],
   "directories": {
     "example": "example"
   },
@@ -25,6 +25,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "debug": "^2.2.0",
+    "findup-sync": "^0.3.0",
     "lodash": "^3.10.1",
     "npm": "^3.3.3",
     "npm-check": "^4.0.1"

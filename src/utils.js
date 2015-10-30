@@ -1,11 +1,20 @@
 import any from 'lodash/collection/any';
-import npm from 'npm';
 import findup from 'findup-sync';
 import path from 'path';
+import {exec} from 'child_process';
 
 export function npmInstall() {
-  return new Promise((resolve) => {
-        npm.load(() => npm.commands.install(resolve));
+  return new Promise((resolve, reject) => {
+    exec('npm install', (error, stdout) => {
+      console.log('error: ', error);
+      if (error) {
+        reject(error);
+        return;
+      }
+
+      console.log('stdout:', stdout);
+      resolve(stdout);
+    });
   });
 }
 

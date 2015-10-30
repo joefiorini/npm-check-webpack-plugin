@@ -41,7 +41,7 @@ export class DependencyCheck {
       .then(this.processCheck)
       .catch((reason) => {
         debug('CAUGHT ' + reason);;
-        if (reason != 'NEEDS_INSTALL') {
+        if (reason !== 'NEEDS_INSTALL') {
           throw reason;
         }
 
@@ -56,6 +56,9 @@ export class DependencyCheck {
           this.log.warn('');
           return 'missing_deps';
         }
+      }).catch(error => {
+        console.error('Error installing dependencies:');
+        console.error(error);
       });
   }
 
@@ -63,8 +66,7 @@ export class DependencyCheck {
     let callback = args[1];
 
     this.performCheck()
-      .then(callback)
-      .catch(callback);
-    ;
+      .then(() => callback())
+      .catch(() => callback());
   }
 }

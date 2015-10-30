@@ -27,6 +27,6 @@
     "findup-sync": "^0.3.0",
     "lodash": "^3.10.1",
     "npm": "^3.3.3",
-    "npm-check": "^4.0.1"
+    "npm-check": "^4.1.2"
   }
 }

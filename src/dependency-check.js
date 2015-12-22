@@ -7,9 +7,10 @@ const debug = mkDebug('npm-check-webpack-plugin');
 
 export class DependencyCheck {
 
-  constructor(options = { autoInstall: true }) {
+  constructor(options = { autoInstall: true }, watch) {
     this.options = options;
     this.log = new Logger(options.silent);
+    this.watch = watch;
   }
 
   processCheck(result) {
@@ -29,7 +30,7 @@ export class DependencyCheck {
   }
 
   performCheck() {
-
+    this.log.debug('Checking dependencies');
     let checkOptions =
       { skipUnused: true,
         path: findPackageJson()
@@ -57,13 +58,30 @@ export class DependencyCheck {
           return 'missing_deps';
         }
       }).catch(error => {
-        console.error('Error installing dependencies:');
-        console.error(error);
+        this.log.error('Error installing dependencies:');
+        this.log.error(error);
       });
   }
 
   apply(context, args) {
     let callback = args[1];
+
+    //skip checking for changes if we're in watch mode and the package.json file hasn't changed
+    if(this.watch){
+      try{
+        let packageJson = findPackageJson() + '/package.json';
+        let filesChanged = Object.keys(args[0].compiler.watchFileSystem.watcher.mtimes);
+
+        //if there are no files changed this is probably the initial run of watch and we should check anyways
+        if(filesChanged.length > 0 && filesChanged.indexOf(packageJson) === -1){
+          this.log.debug('No package.json changes found');
+          callback();
+          return;
+        }
+      }catch(e){
+        this.log.error(e);
+      }
+    }
 
     this.performCheck()
       .then(() => callback())

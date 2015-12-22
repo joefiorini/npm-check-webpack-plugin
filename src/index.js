@@ -7,6 +7,6 @@ export default class NpmCheckPlugin {
 
   apply(compiler) {
     compiler.plugin('run', new DependencyCheck(this.options));
-    compiler.plugin('watch-run', new DependencyCheck(this.options));
+    compiler.plugin('watch-run', new DependencyCheck(this.options, true));
   }
 }

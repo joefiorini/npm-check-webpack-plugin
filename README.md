@@ -1,3 +1,5 @@
+** This package is now deprecated and archived. It hasn't seen any development in the past 7 years and it's not something I use or maintain anymore. **
+
 # npm-check-webpack-plugin
 
 Uses the [`npm-check`](https://github.com/dylang/npm-check) library to check for missing dependencies before running a webpack build. By default, if it finds any missing or outdated dependencies it will automatically run `npm install` before continuing with the build.
